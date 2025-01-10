@@ -2,12 +2,13 @@ import type { Plugin } from "@elizaos/core";
 import { getOnChainActions } from "./actions";
 import { erc20, USDC } from "@goat-sdk/plugin-erc20";
 import { sendETH } from "@goat-sdk/core";
-import { getWalletClient, getWalletProvider } from "./wallet";
-
+import { chain, getWalletClient, getWalletProvider } from "./wallet";
+import { uniswap } from "@goat-sdk/plugin-uniswap";
 async function createGoatPlugin(
     getSetting: (key: string) => string | undefined
 ): Promise<Plugin> {
     const walletClient = getWalletClient(getSetting);
+
     const actions = await getOnChainActions({
         wallet: walletClient,
         // Add plugins here based on what actions you want to use

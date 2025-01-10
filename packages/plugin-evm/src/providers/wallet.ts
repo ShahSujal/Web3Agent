@@ -16,6 +16,7 @@ import type {
     PrivateKeyAccount,
 } from "viem";
 import * as viemChains from "viem/chains";
+// import { useWallet } from "../../../../client/src/lib/wallet";
 
 import type { SupportedChain } from "../types";
 
@@ -215,6 +216,7 @@ export const evmWalletProvider: Provider = {
         _state?: State
     ): Promise<string | null> {
         try {
+            // const data = await useWallet();
             const walletProvider = initWalletProvider(runtime);
             const address = walletProvider.getAddress();
             const balance = await walletProvider.getWalletBalance();
@@ -226,3 +228,9 @@ export const evmWalletProvider: Provider = {
         }
     },
 };
+
+// otc or invoice
+// otc/dashboard  - otc - app
+// otc/ai-agent  - eliza - app
+
+// invoice/dashboard
