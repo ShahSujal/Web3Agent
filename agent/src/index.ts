@@ -23,12 +23,10 @@ import {
     ICacheManager,
 } from "@elizaos/core";
 import { RedisClient } from "@elizaos/adapter-redis";
-import { zgPlugin } from "@elizaos/plugin-0g";
 import { bootstrapPlugin } from "@elizaos/plugin-bootstrap";
 import createGoatPlugin from "@elizaos/plugin-goat";
 // import { intifacePlugin } from "@elizaos/plugin-intiface";
 import { DirectClient } from "@elizaos/client-direct";
-import { aptosPlugin } from "@elizaos/plugin-aptos";
 import {
     advancedTradePlugin,
     coinbaseCommercePlugin,
@@ -43,7 +41,6 @@ import { nftGenerationPlugin } from "@elizaos/plugin-nft-generation";
 import { createNodePlugin } from "@elizaos/plugin-node";
 import { solanaPlugin } from "@elizaos/plugin-solana";
 import { TEEMode, teePlugin } from "@elizaos/plugin-tee";
-import { abstractPlugin } from "@elizaos/plugin-abstract";
 import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
@@ -490,7 +487,6 @@ export async function createAgent(
             getSecret(character, "SOLANA_ADMIN_PRIVATE_KEY")
                 ? nftGenerationPlugin
                 : null,
-            getSecret(character, "ZEROG_PRIVATE_KEY") ? zgPlugin : null,
             getSecret(character, "COINBASE_COMMERCE_KEY")
                 ? coinbaseCommercePlugin
                 : null,
@@ -519,10 +515,6 @@ export async function createAgent(
                 ? webhookPlugin
                 : null,
             getSecret(character, "EVM_PROVIDER_URL") ? goatPlugin : null,
-            getSecret(character, "ABSTRACT_PRIVATE_KEY")
-                ? abstractPlugin
-                : null,
-            getSecret(character, "APTOS_PRIVATE_KEY") ? aptosPlugin : null,
         ].filter(Boolean),
         providers: [],
         actions: [],
